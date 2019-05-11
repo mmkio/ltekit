@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>동영상 전송 - LTE Kit 사용설명서</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\ub3d9\uc601\uc0c1 \uc804\uc1a1";
+    var mkdocs_page_input_path = "app-livestream.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LTE Kit 사용설명서</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lte-kit/">키트구성</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">인터넷 연결</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../use-raspberry-ppp/">라즈베리파이 PPP</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">LTE 모듈 응용</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../app-twitter/">트위트 보내기</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-mail/">메일 보내기</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-gps/">GPS 신호 수신</a>
+                </li>
+                <li class=" current">
+                    
+    <a class="current" href="./">동영상 전송</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#livestream">LiveStream 영상보내기</a></li>
+    
+
+    </ul>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LTE Kit 사용설명서</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>LTE 모듈 응용 &raquo;</li>
+        
+      
+    
+    <li>동영상 전송</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="livestream">LiveStream 영상보내기</h1>
+<p>Sixfab 3G/LTE Shields provides very high speed internet connection. Use Raspberry Pi camera and you can make live stream to Youtube and Facebook.<br />
+You can use following transactions for work. </p>
+<p>1.Firstly, Connect your Raspberry Pi to internet and run <code>sudo apt-get update</code> to update your Raspberry Pi  </p>
+<p>2.Make <a href="https://github.com/sixfab/rpiShields/tree/master/tutorials/tutorial3">Tutorial3</a> to connect internet over Mobile.</p>
+<p>3.For live stream you can use FFMpeg.</p>
+<blockquote>
+<p>3.1 Install h264 Support<br />
+    - <code>cd /usr/src</code><br />
+    - <code>git clone git://git.videolan.org/x264</code><br />
+    - <code>cd x264</code><br />
+    - <code>./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl</code><br />
+    - <code>make</code><br />
+    - <code>sudo make install</code>  </p>
+<p>3.2. Install FFMpeg 
+    - <code>cd /usr/src</code><br />
+    - <code>git clone https://github.com/FFmpeg/FFmpeg.git</code><br />
+    - <code>cd ffmpeg</code><br />
+    - <code>sudo ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree</code><br />
+    - <code>make</code> if you have a Model B+ and later version, you can use <code>make -j4</code><br />
+       instead of just make  to take advantage of all four cores!<br />
+    - <code>sudo make install</code>  </p>
+</blockquote>
+<p>4.Signup for a facebook or youtube account and get <code>[SERVER URL]/[STREAM NAME]</code>
+5.At last, run this command to start live<br/>
+  <code>raspivid -o - -t 0 -vf -hf -fps 30 -b 6000000 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 128k -g 50 -strict experimental -f flv [SERVER URL]/[STREAM NAME]</code></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../app-gps/" class="btn btn-neutral" title="GPS 신호 수신"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../app-gps/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

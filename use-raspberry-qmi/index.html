@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>QMI 설치 및 인터넷 연결 - LTE Kit 사용설명서</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "QMI \uc124\uce58 \ubc0f \uc778\ud130\ub137 \uc5f0\uacb0";
+    var mkdocs_page_input_path = "use-raspberry-qmi.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LTE Kit 사용설명서</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lte-kit/">키트구성</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">인터넷 연결</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../use-raspberry-ppp/">라즈베리파이 PPP</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">LTE 모듈 응용</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../app-twitter/">트위트 보내기</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-mail/">메일 보내기</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-gps/">GPS 신호 수신</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-livestream/">동영상 전송</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LTE Kit 사용설명서</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>QMI 설치 및 인터넷 연결</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="qmi">QMI 설치 및 인터넷 연결</h1>
+<p>1.USB LTE  Module SIM 카드 장착</p>
+<p>2.USB LTE 모듈 과 라즈베리파이 연결 USB 연결</p>
+<p>3.wwan0 이더넷 Port 생성 확인</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">ifconfig</span> 
+</pre></div>
+</td></tr></table>
+
+<p>8.라즈베리파이 다른 인터넷 연결 설정 사용중지</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">ifconfig</span> 
+<span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">ifconfig</span> <span class="n">eth0</span> <span class="n">down</span>
+<span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">ifconfig</span> <span class="n">wlan0</span> <span class="n">down</span>
+</pre></div>
+</td></tr></table>
+
+<p>3.libqmi-uitils 설치</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libqmi</span><span class="o">-</span><span class="n">utils</span>
+<span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">qmi</span><span class="o">-</span><span class="n">network</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">cdc</span><span class="o">-</span><span class="n">wdm0</span> <span class="k">start</span>
+<span class="n">pi</span><span class="o">&gt;</span> <span class="n">dhclient</span> <span class="o">-</span><span class="n">v</span> <span class="n">wwan0</span>
+</pre></div>
+</td></tr></table>
+
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">*</span> <span class="err">국내</span> <span class="err">주요</span> <span class="n">APN</span> <span class="err">목록</span> 
+
+<span class="n">KT</span> <span class="p">:</span> <span class="n">lte</span><span class="p">.</span><span class="n">ktfwing</span><span class="p">.</span><span class="n">com</span>  
+<span class="n">SKT</span> <span class="p">:</span> <span class="n">lte</span><span class="p">.</span><span class="n">sktelecom</span><span class="p">.</span><span class="n">com</span><span class="p">,</span> <span class="n">lte</span><span class="o">-</span><span class="n">internet</span><span class="p">.</span><span class="n">sktelecom</span><span class="p">.</span><span class="n">com</span><span class="p">,</span> <span class="n">ltetab</span><span class="p">.</span><span class="n">sktelecom</span><span class="p">.</span><span class="n">com</span>
+<span class="n">LG</span> <span class="n">U</span><span class="o">+</span> <span class="p">:</span> <span class="n">internet</span><span class="p">.</span><span class="n">lguplus</span><span class="p">.</span><span class="n">co</span><span class="p">.</span><span class="n">kr</span>   
+</pre></div>
+</td></tr></table>
+
+<p>10.이더넷 포트 생성 및 상태확인</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">ifconfig</span> <span class="n">ppp0</span> 
+</pre></div>
+</td></tr></table>
+
+<p><img src="http://localhost:8000/img/rpi/ifconfig-ppp0.png"></p>
+<p>10.통신연결상태확인</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">ping</span> <span class="mi">8</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">8</span>          <span class="o">#</span><span class="err">구글</span> <span class="n">DNS</span> <span class="err">서버</span> <span class="err">주소</span>
+<span class="n">pi</span><span class="o">&gt;</span> <span class="n">ping</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>   <span class="o">#</span><span class="err">구글</span> <span class="err">웹사이트</span> <span class="err">주소</span>
+</pre></div>
+</td></tr></table>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

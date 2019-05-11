@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>트위트 보내기 - LTE Kit 사용설명서</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\ud2b8\uc704\ud2b8 \ubcf4\ub0b4\uae30";
+    var mkdocs_page_input_path = "app-twitter.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LTE Kit 사용설명서</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../lte-kit/">키트구성</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">인터넷 연결</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../use-raspberry-ppp/">라즈베리파이 PPP</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">LTE 모듈 응용</span>
+    <ul class="subnav">
+                <li class=" current">
+                    
+    <a class="current" href="./">트위트 보내기</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l3"><a href="#_1">트위트 메시지 보내기</a></li>
+    
+
+    </ul>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-mail/">메일 보내기</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-gps/">GPS 신호 수신</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-livestream/">동영상 전송</a>
+                </li>
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LTE Kit 사용설명서</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>LTE 모듈 응용 &raquo;</li>
+        
+      
+    
+    <li>트위트 보내기</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">트위트 메시지 보내기</h1>
+<p>or 3G/LTE Shield
+- Make <a href="https://github.com/sixfab/rpiShields/tree/master/tutorials/tutorial2">Tutorial 3</a> to connect internet over Mobile.
+Register a Twitter App with this tutorial to get Consumer Key etc.
+Install Python and required libraries with following commands
+sudo apt-get install python-setuptools
+sudo easy_install pip
+sudo pip install twython
+Download source code Link
+wget https://raw.githubusercontent.com/sixfab/rpiShields/master/tutorials/tutorial5/Tiwitting.py
+Make it executable
+sudo chmod +x Tiwitting.py
+Let's send tweet
+python Tiwitting.py 'Hello Everyone, I am using Sixfab Iot Shield!'</p>
+<p>https://stackabuse.com/accessing-the-twitter-api-with-python/</p>
+<p>소스코드</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">picamera</span>
+<span class="kn">from</span> <span class="nn">twython</span> <span class="kn">import</span> <span class="n">Twython</span>
+<span class="n">CONSUMER_KEY</span> <span class="o">=</span> <span class="s1">&#39;***************YOUR DATA*****************&#39;</span>
+<span class="n">CONSUMER_SECRET</span> <span class="o">=</span> <span class="s1">&#39;***************YOUR DATA*****************&#39;</span>
+<span class="n">ACCESS_KEY</span> <span class="o">=</span> <span class="s1">&#39;***************YOUR DATA*****************&#39;</span>
+<span class="n">ACCESS_SECRET</span> <span class="o">=</span> <span class="s1">&#39;***************YOUR DATA*****************&#39;</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">Twython</span><span class="p">(</span><span class="n">CONSUMER_KEY</span><span class="p">,</span><span class="n">CONSUMER_SECRET</span><span class="p">,</span><span class="n">ACCESS_KEY</span><span class="p">,</span><span class="n">ACCESS_SECRET</span><span class="p">)</span> 
+
+<span class="n">camera</span><span class="o">=</span><span class="n">picamera</span><span class="o">.</span><span class="n">PiCamera</span><span class="p">()</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">resolution</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">768</span><span class="p">)</span>
+<span class="n">camera</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="s1">&#39;image.jpg&#39;</span><span class="p">)</span>
+<span class="n">photo</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;image.jpg&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">api</span><span class="o">.</span><span class="n">update_status_with_media</span><span class="p">(</span><span class="n">media</span><span class="o">=</span><span class="n">photo</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</td></tr></table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../app-mail/" class="btn btn-neutral float-right" title="메일 보내기">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../use-raspberry-ppp/" class="btn btn-neutral" title="라즈베리파이 PPP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../use-raspberry-ppp/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../app-mail/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
