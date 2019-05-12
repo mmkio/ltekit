@@ -3,7 +3,7 @@
 echo "creating directories"
 mkdir -p /etc/ppp/peers
 
-echo "creating script file : /etc/chatscripts/quectel-chat-connect"
+echo "creating script file : /etc/ppp/peers/quectel-chat-connect"
 echo "
 ABORT \"BUSY\"
 ABORT \"NO CARRIER\"
