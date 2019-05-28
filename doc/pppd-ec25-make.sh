@@ -3,7 +3,7 @@
 echo "creating directories"
 mkdir -p /etc/ppp/peers
 
-echo "creating script file : /etc/ppp/peers/quectel-chat-connect"
+echo "creating script file : /etc/chatscripts/quectel-chat-connect"
 echo "
 ABORT \"BUSY\"
 ABORT \"NO CARRIER\"
@@ -35,9 +35,9 @@ echo "creating script file : /etc/ppp/peers/lte"
 echo "
 /dev/ttyUSB3 115200
 # The chat script, customize your APN in this file
-connect 'chat -s -v -f /etc/ppp/peers/quectel-chat-connect -T $1'
+connect 'chat -s -v -f /etc/chatscripts/quectel-chat-connect -T $1'
 # The close script
-disconnect 'chat -s -v -f /etc/ppp/peers/quectel-chat-disconnect'
+disconnect 'chat -s -v -f /etc/chatscripts/quectel-chat-disconnect'
 # Hide password in debug messages
 hide-password
 # The phone is not required to authenticate

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>GPS 신호 수신 - LTE Kit 사용설명서</title>
+  <title>3.1.GPS 신호 수신 - MMIO LTE Kit</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "GPS \uc2e0\ud638 \uc218\uc2e0";
+    var mkdocs_page_name = "3.1.GPS \uc2e0\ud638 \uc218\uc2e0";
     var mkdocs_page_input_path = "app-gps.md";
     var mkdocs_page_url = null;
   </script>
@@ -36,7 +36,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> LTE Kit 사용설명서</a>
+        <a href=".." class="icon icon-home"> MMIO LTE Kit</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -50,35 +50,27 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lte-kit/">키트구성</a>
+    <a class="" href="../lte-kit/">1.키트구성</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">인터넷 연결</span>
+    <span class="caption-text">2.인터넷 연결</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../use-raspberry-ppp/">라즈베리파이 PPP</a>
+    <a class="" href="../use-raspberry-ppp/">2.1.라즈베리파이 PPP</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">LTE 모듈 응용</span>
+    <span class="caption-text">3.LTE 모듈 응용</span>
     <ul class="subnav">
-                <li class="">
-                    
-    <a class="" href="../app-twitter/">트위트 보내기</a>
-                </li>
-                <li class="">
-                    
-    <a class="" href="../app-mail/">메일 보내기</a>
-                </li>
                 <li class=" current">
                     
-    <a class="current" href="./">GPS 신호 수신</a>
+    <a class="current" href="./">3.1.GPS 신호 수신</a>
     <ul class="subnav">
             
     <li class="toctree-l3"><a href="#gps">GPS 수신값 가져오기</a></li>
@@ -88,7 +80,15 @@
                 </li>
                 <li class="">
                     
-    <a class="" href="../app-livestream/">동영상 전송</a>
+    <a class="" href="../app-livestream/">3.2.동영상 전송</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-twitter/">3.3.트위트 보내기</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../app-mail/">3.4.메일 보내기</a>
                 </li>
     </ul>
 	    </li>
@@ -103,7 +103,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LTE Kit 사용설명서</a>
+        <a href="..">MMIO LTE Kit</a>
       </nav>
 
       
@@ -115,11 +115,11 @@
     
       
         
-          <li>LTE 모듈 응용 &raquo;</li>
+          <li>3.LTE 모듈 응용 &raquo;</li>
         
       
     
-    <li>GPS 신호 수신</li>
+    <li>3.1.GPS 신호 수신</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -129,129 +129,74 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="gps">GPS 수신값 가져오기</h1>
+                <h3 id="gps">GPS 수신값 가져오기<a class="headerlink" href="#gps" title="Permanent link">#</a></h3>
 <p>1.프로그램 다운로드</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">cd</span> <span class="o">~</span>
-<span class="n">pi</span><span class="o">&gt;</span> <span class="n">wget</span> <span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">letmodule</span><span class="o">/</span><span class="n">gpstest</span><span class="p">.</span><span class="n">py</span>
-</pre></div>
-</td></tr></table>
+<pre><code>pi&gt; cd ~
+pi&gt; wget github.com/letmodule/gpstest.py
+</code></pre>
 
 <p>1.프로그램 실행</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">python</span> <span class="n">gpstest</span><span class="p">.</span><span class="n">py</span>
-</pre></div>
-</td></tr></table>
+<pre><code>pi&gt; sudo python gpstest.py
+</code></pre>
 
 <ul>
 <li>프로그램 코드</li>
 </ul>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">serial</span>
+<pre><code class="python">from time import sleep
+import serial
 
-<span class="n">portwrite</span> <span class="o">=</span> <span class="s2">&quot;/dev/ttyUSB2&quot;</span>
-<span class="n">port</span> <span class="o">=</span> <span class="s2">&quot;/dev/ttyUSB1&quot;</span>
+portwrite = &quot;/dev/ttyUSB2&quot;
+port = &quot;/dev/ttyUSB1&quot;
 
-<span class="k">def</span> <span class="nf">parseGPS</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="k">print</span> <span class="s2">&quot;raw:&quot;</span><span class="p">,</span> <span class="n">data</span> <span class="c1">#prints raw data</span>
-    <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;$GPRMC&quot;</span><span class="p">:</span>
-        <span class="n">sdata</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
-            <span class="k">print</span> <span class="s2">&quot;no satellite data available&quot;</span>
-            <span class="k">return</span>
-        <span class="k">print</span> <span class="s2">&quot;-----Parsing GPRMC-----&quot;</span>
-        <span class="n">time</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
-        <span class="n">lat</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">sdata</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1">#latitude</span>
-        <span class="n">dirLat</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>      <span class="c1">#latitude direction N/S</span>
-        <span class="n">lon</span> <span class="o">=</span> <span class="n">decode</span><span class="p">(</span><span class="n">sdata</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="c1">#longitute</span>
-        <span class="n">dirLon</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span>      <span class="c1">#longitude direction E/W</span>
-        <span class="n">speed</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span>       <span class="c1">#Speed in knots</span>
-        <span class="n">trCourse</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span>    <span class="c1">#True course</span>
-        <span class="n">date</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">9</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">9</span><span class="p">][</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">9</span><span class="p">][</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
-                           <span class="c1">#date</span>
-        <span class="n">variation</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>  <span class="c1">#variation</span>
-        <span class="n">degreeChecksum</span> <span class="o">=</span> <span class="n">sdata</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
-        <span class="n">dc</span> <span class="o">=</span> <span class="n">degreeChecksum</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span>
-        <span class="n">degree</span> <span class="o">=</span> <span class="n">dc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>        <span class="c1">#degree</span>
-        <span class="n">checksum</span> <span class="o">=</span> <span class="n">dc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>      <span class="c1">#checksum</span>
-        <span class="k">print</span> <span class="s2">&quot;time : </span><span class="si">%s</span><span class="s2">, latitude : </span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">), longitude : </span><span class="si">%s</span><span class="s2">(</span><span class="si">%s</span><span class="s2">), speed : </span><span class="si">%s</span><span class="s2">, True Course : </span>
-        <span class="o">%</span><span class="n">s</span><span class="p">,</span> <span class="n">Date</span> <span class="p">:</span> <span class="o">%</span><span class="n">s</span><span class="p">,</span> <span class="n">Magnetic</span> <span class="n">Variation</span> <span class="p">:</span> <span class="o">%</span><span class="n">s</span><span class="p">(</span><span class="o">%</span><span class="n">s</span><span class="p">),</span><span class="n">Checksum</span> <span class="p">:</span> <span class="o">%</span><span class="n">s</span>   
-        <span class="s2">&quot;%    (time,lat,dirLat,lon,dirLon,speed,trCourse,date,variation,degree,checksum)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">print</span> <span class="s2">&quot;Printed data is &quot;</span><span class="p">,</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
-<span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="n">coord</span><span class="p">):</span>
-    <span class="c1">#Converts DDDMM.MMMMM -&gt; DD deg MM.MMMMM min</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">coord</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
-    <span class="n">head</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">tail</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">deg</span> <span class="o">=</span> <span class="n">head</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-    <span class="nb">min</span> <span class="o">=</span> <span class="n">head</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
-    <span class="k">return</span> <span class="n">deg</span> <span class="o">+</span> <span class="s2">&quot; deg &quot;</span> <span class="o">+</span> <span class="nb">min</span> <span class="o">+</span> <span class="s2">&quot;.&quot;</span> <span class="o">+</span> <span class="n">tail</span> <span class="o">+</span> <span class="s2">&quot; min&quot;</span>
+def parseGPS(data):
+    print &quot;raw:&quot;, data #prints raw data
+    if data[0:6] == &quot;$GPRMC&quot;:
+        sdata = data.split(&quot;,&quot;)
+        if sdata[2] == 'V':
+            print &quot;no satellite data available&quot;
+            return
+        print &quot;-----Parsing GPRMC-----&quot;
+        time = sdata[1][0:2] + &quot;:&quot; + sdata[1][2:4] + &quot;:&quot; + sdata[1][4:6]
+        lat = decode(sdata[3]) #latitude
+        dirLat = sdata[4]      #latitude direction N/S
+        lon = decode(sdata[5]) #longitute
+        dirLon = sdata[6]      #longitude direction E/W
+        speed = sdata[7]       #Speed in knots
+        trCourse = sdata[8]    #True course
+        date = sdata[9][0:2] + &quot;/&quot; + sdata[9][2:4] + &quot;/&quot; + sdata[9][4:6]
+                           #date
+        variation = sdata[10]  #variation
+        degreeChecksum = sdata[12]
+        dc = degreeChecksum.split(&quot;*&quot;)
+        degree = dc[0]        #degree
+        checksum = dc[1]      #checksum
+        print &quot;time : %s, latitude : %s(%s), longitude : %s(%s), speed : %s, True Course : 
+        %s, Date : %s, Magnetic Variation : %s(%s),Checksum : %s   
+        &quot;%    (time,lat,dirLat,lon,dirLon,speed,trCourse,date,variation,degree,checksum)
+    else:
+        print &quot;Printed data is &quot;,data[0:6]
+def decode(coord):
+    #Converts DDDMM.MMMMM -&gt; DD deg MM.MMMMM min
+    x = coord.split(&quot;.&quot;)
+    head = x[0]
+    tail = x[1]
+    deg = head[0:-2]
+    min = head[-2:]
+    return deg + &quot; deg &quot; + min + &quot;.&quot; + tail + &quot; min&quot;
 
-<span class="k">print</span> <span class="s2">&quot;Connecting port&quot;</span>
-<span class="n">serw</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">portwrite</span><span class="p">,</span> <span class="n">baudrate</span> <span class="o">=</span> <span class="mi">115200</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="n">rtscts</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dsrdtr</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">serw</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;AT+QGPS=1</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="n">serw</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+print &quot;Connecting port&quot;
+serw = serial.Serial(portwrite, baudrate = 115200, timeout = 1,rtscts=True, dsrdtr=True)
+serw.write('AT+QGPS=1\r')
+serw.close()
+sleep(0.5)
 
-<span class="k">print</span> <span class="s2">&quot;Receiving GPS data&quot;</span>
-<span class="n">ser</span> <span class="o">=</span> <span class="n">serial</span><span class="o">.</span><span class="n">Serial</span><span class="p">(</span><span class="n">port</span><span class="p">,</span> <span class="n">baudrate</span> <span class="o">=</span> <span class="mi">115200</span><span class="p">,</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span><span class="n">rtscts</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">dsrdtr</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
-   <span class="n">data</span> <span class="o">=</span> <span class="n">ser</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-   <span class="n">parseGPS</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</pre></div>
-</td></tr></table>
+print &quot;Receiving GPS data&quot;
+ser = serial.Serial(port, baudrate = 115200, timeout = 0.5,rtscts=True, dsrdtr=True)
+while True:
+   data = ser.readline()
+   parseGPS(data)
+
+</code></pre>
               
             </div>
           </div>
@@ -259,10 +204,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../app-livestream/" class="btn btn-neutral float-right" title="동영상 전송">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../app-livestream/" class="btn btn-neutral float-right" title="3.2.동영상 전송">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../app-mail/" class="btn btn-neutral" title="메일 보내기"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../use-raspberry-ppp/" class="btn btn-neutral" title="2.1.라즈베리파이 PPP"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -288,7 +233,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../app-mail/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../use-raspberry-ppp/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../app-livestream/" style="color: #fcfcfc">Next &raquo;</a></span>

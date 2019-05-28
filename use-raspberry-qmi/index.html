@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>QMI 설치 및 인터넷 연결 - LTE Kit 사용설명서</title>
+  <title>QMI 설치 및 인터넷 연결 - MMIO LTE Kit</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -36,7 +36,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> LTE Kit 사용설명서</a>
+        <a href=".." class="icon icon-home"> MMIO LTE Kit</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -50,39 +50,39 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../lte-kit/">키트구성</a>
+    <a class="" href="../lte-kit/">1.키트구성</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">인터넷 연결</span>
+    <span class="caption-text">2.인터넷 연결</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../use-raspberry-ppp/">라즈베리파이 PPP</a>
+    <a class="" href="../use-raspberry-ppp/">2.1.라즈베리파이 PPP</a>
                 </li>
     </ul>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <span class="caption-text">LTE 모듈 응용</span>
+    <span class="caption-text">3.LTE 모듈 응용</span>
     <ul class="subnav">
                 <li class="">
                     
-    <a class="" href="../app-twitter/">트위트 보내기</a>
+    <a class="" href="../app-gps/">3.1.GPS 신호 수신</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../app-mail/">메일 보내기</a>
+    <a class="" href="../app-livestream/">3.2.동영상 전송</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../app-gps/">GPS 신호 수신</a>
+    <a class="" href="../app-twitter/">3.3.트위트 보내기</a>
                 </li>
                 <li class="">
                     
-    <a class="" href="../app-livestream/">동영상 전송</a>
+    <a class="" href="../app-mail/">3.4.메일 보내기</a>
                 </li>
     </ul>
 	    </li>
@@ -97,7 +97,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">LTE Kit 사용설명서</a>
+        <a href="..">MMIO LTE Kit</a>
       </nav>
 
       
@@ -119,56 +119,41 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="qmi">QMI 설치 및 인터넷 연결</h1>
+                <h3 id="qmi">QMI 설치 및 인터넷 연결<a class="headerlink" href="#qmi" title="Permanent link">#</a></h3>
 <p>1.USB LTE  Module SIM 카드 장착</p>
 <p>2.USB LTE 모듈 과 라즈베리파이 연결 USB 연결</p>
 <p>3.wwan0 이더넷 Port 생성 확인</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">ifconfig</span> 
-</pre></div>
-</td></tr></table>
+<pre><code>pi&gt; ifconfig 
+</code></pre>
 
 <p>8.라즈베리파이 다른 인터넷 연결 설정 사용중지</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">ifconfig</span> 
-<span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">ifconfig</span> <span class="n">eth0</span> <span class="n">down</span>
-<span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">ifconfig</span> <span class="n">wlan0</span> <span class="n">down</span>
-</pre></div>
-</td></tr></table>
+<pre><code>pi&gt; ifconfig 
+pi&gt; sudo ifconfig eth0 down
+pi&gt; sudo ifconfig wlan0 down
+</code></pre>
 
 <p>3.libqmi-uitils 설치</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">libqmi</span><span class="o">-</span><span class="n">utils</span>
-<span class="n">pi</span><span class="o">&gt;</span> <span class="n">sudo</span> <span class="n">qmi</span><span class="o">-</span><span class="n">network</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">cdc</span><span class="o">-</span><span class="n">wdm0</span> <span class="k">start</span>
-<span class="n">pi</span><span class="o">&gt;</span> <span class="n">dhclient</span> <span class="o">-</span><span class="n">v</span> <span class="n">wwan0</span>
-</pre></div>
-</td></tr></table>
+<pre><code>pi&gt; sudo apt install libqmi-utils
+pi&gt; sudo qmi-network /dev/cdc-wdm0 start
+pi&gt; dhclient -v wwan0
+</code></pre>
 
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">*</span> <span class="err">국내</span> <span class="err">주요</span> <span class="n">APN</span> <span class="err">목록</span> 
+<pre><code>* 국내 주요 APN 목록 
 
-<span class="n">KT</span> <span class="p">:</span> <span class="n">lte</span><span class="p">.</span><span class="n">ktfwing</span><span class="p">.</span><span class="n">com</span>  
-<span class="n">SKT</span> <span class="p">:</span> <span class="n">lte</span><span class="p">.</span><span class="n">sktelecom</span><span class="p">.</span><span class="n">com</span><span class="p">,</span> <span class="n">lte</span><span class="o">-</span><span class="n">internet</span><span class="p">.</span><span class="n">sktelecom</span><span class="p">.</span><span class="n">com</span><span class="p">,</span> <span class="n">ltetab</span><span class="p">.</span><span class="n">sktelecom</span><span class="p">.</span><span class="n">com</span>
-<span class="n">LG</span> <span class="n">U</span><span class="o">+</span> <span class="p">:</span> <span class="n">internet</span><span class="p">.</span><span class="n">lguplus</span><span class="p">.</span><span class="n">co</span><span class="p">.</span><span class="n">kr</span>   
-</pre></div>
-</td></tr></table>
+KT : lte.ktfwing.com  
+SKT : lte.sktelecom.com, lte-internet.sktelecom.com, ltetab.sktelecom.com
+LG U+ : internet.lguplus.co.kr   
+</code></pre>
 
 <p>10.이더넷 포트 생성 및 상태확인</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">ifconfig</span> <span class="n">ppp0</span> 
-</pre></div>
-</td></tr></table>
+<pre><code>pi&gt; ifconfig ppp0 
+</code></pre>
 
 <p><img src="http://localhost:8000/img/rpi/ifconfig-ppp0.png"></p>
 <p>10.통신연결상태확인</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">pi</span><span class="o">&gt;</span> <span class="n">ping</span> <span class="mi">8</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">8</span>          <span class="o">#</span><span class="err">구글</span> <span class="n">DNS</span> <span class="err">서버</span> <span class="err">주소</span>
-<span class="n">pi</span><span class="o">&gt;</span> <span class="n">ping</span> <span class="n">www</span><span class="p">.</span><span class="n">google</span><span class="p">.</span><span class="n">com</span>   <span class="o">#</span><span class="err">구글</span> <span class="err">웹사이트</span> <span class="err">주소</span>
-</pre></div>
-</td></tr></table>
+<pre><code>pi&gt; ping 8.8.8.8          #구글 DNS 서버 주소
+pi&gt; ping www.google.com   #구글 웹사이트 주소
+</code></pre>
               
             </div>
           </div>
