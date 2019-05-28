@@ -73,7 +73,13 @@
     <a class="current" href="./">3.1.GPS 신호 수신</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#gps">GPS 수신값 가져오기</a></li>
+    <li class="toctree-l3"><a href="#1">1.프로그램 다운로드</a></li>
+    
+
+    <li class="toctree-l3"><a href="#2">2.프로그램 실행</a></li>
+    
+
+    <li class="toctree-l3"><a href="#3">3.프로그램 코드</a></li>
     
 
     </ul>
@@ -129,19 +135,16 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="gps">GPS 수신값 가져오기<a class="headerlink" href="#gps" title="Permanent link">#</a></h3>
-<p>1.프로그램 다운로드</p>
+                <h4 id="1">1.프로그램 다운로드<a class="headerlink" href="#1" title="Permanent link">#</a></h4>
 <pre><code>pi&gt; cd ~
 pi&gt; wget github.com/letmodule/gpstest.py
 </code></pre>
 
-<p>1.프로그램 실행</p>
+<h4 id="2">2.프로그램 실행<a class="headerlink" href="#2" title="Permanent link">#</a></h4>
 <pre><code>pi&gt; sudo python gpstest.py
 </code></pre>
 
-<ul>
-<li>프로그램 코드</li>
-</ul>
+<h4 id="3">3.프로그램 코드<a class="headerlink" href="#3" title="Permanent link">#</a></h4>
 <pre><code class="python">from time import sleep
 import serial
 

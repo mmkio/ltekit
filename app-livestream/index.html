@@ -77,7 +77,19 @@
     <a class="current" href="./">3.2.동영상 전송</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#livestream">LiveStream 영상보내기</a></li>
+    <li class="toctree-l3"><a href="#1livestream">1.LiveStream</a></li>
+    
+
+    <li class="toctree-l3"><a href="#2h264">2.H264 프로그램 설치</a></li>
+    
+
+    <li class="toctree-l3"><a href="#3ffmpeg">3.FFMpeg 프로그램 설치</a></li>
+    
+
+    <li class="toctree-l3"><a href="#4">4.패이스북 또는 유튜브 계정 등록</a></li>
+    
+
+    <li class="toctree-l3"><a href="#5">5. 전송프로그램 실행</a></li>
     
 
     </ul>
@@ -129,32 +141,31 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="livestream">LiveStream 영상보내기<a class="headerlink" href="#livestream" title="Permanent link">#</a></h3>
-<p>Sixfab 3G/LTE Shields provides very high speed internet connection. Use Raspberry Pi camera and you can make live stream to Youtube and Facebook.<br />
-You can use following transactions for work. </p>
-<p>1.Firstly, Connect your Raspberry Pi to internet and run <code>sudo apt-get update</code> to update your Raspberry Pi  </p>
-<p>2.Make <a href="https://github.com/sixfab/rpiShields/tree/master/tutorials/tutorial3">Tutorial3</a> to connect internet over Mobile.</p>
-<p>3.For live stream you can use FFMpeg.</p>
-<blockquote>
-<p>3.1 Install h264 Support<br />
-    - <code>cd /usr/src</code><br />
-    - <code>git clone git://git.videolan.org/x264</code><br />
-    - <code>cd x264</code><br />
-    - <code>./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl</code><br />
-    - <code>make</code><br />
-    - <code>sudo make install</code>  </p>
-<p>3.2. Install FFMpeg 
-    - <code>cd /usr/src</code><br />
-    - <code>git clone https://github.com/FFmpeg/FFmpeg.git</code><br />
-    - <code>cd ffmpeg</code><br />
-    - <code>sudo ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree</code><br />
-    - <code>make</code> if you have a Model B+ and later version, you can use <code>make -j4</code><br />
-       instead of just make  to take advantage of all four cores!<br />
-    - <code>sudo make install</code>  </p>
-</blockquote>
-<p>4.Signup for a facebook or youtube account and get <code>[SERVER URL]/[STREAM NAME]</code>
-5.At last, run this command to start live<br/>
-  <code>raspivid -o - -t 0 -vf -hf -fps 30 -b 6000000 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 128k -g 50 -strict experimental -f flv [SERVER URL]/[STREAM NAME]</code></p>
+                <h4 id="1livestream">1.LiveStream<a class="headerlink" href="#1livestream" title="Permanent link">#</a></h4>
+<p>유튜브나 페이스북을 이용한 실시간 동영상을 전송하도록 지원한다.</p>
+<h4 id="2h264">2.H264 프로그램 설치<a class="headerlink" href="#2h264" title="Permanent link">#</a></h4>
+<pre><code>pi&gt; cd /usr/src  
+pi&gt; git clone git://git.videolan.org/x264  
+pi&gt; cd x264  
+pi&gt; ./configure --host=arm-unknown-linux-gnueabi --enable-static --disable-opencl`  
+pi&gt; make  
+pi&gt; sudo make install  
+</code></pre>
+
+<h4 id="3ffmpeg">3.FFMpeg 프로그램 설치<a class="headerlink" href="#3ffmpeg" title="Permanent link">#</a></h4>
+<pre><code>pi&gt; cd /usr/src
+pi&gt; git clone https://github.com/FFmpeg/FFmpeg.git  
+pi&gt; cd ffmpeg  
+pi&gt; sudo ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree
+pi&gt; make   
+pi&gt; sudo make install  
+</code></pre>
+
+<h4 id="4">4.패이스북 또는 유튜브 계정 등록<a class="headerlink" href="#4" title="Permanent link">#</a></h4>
+<p>계정등록 후 해당 URL을 획득한다. <code>[SERVER URL]/[STREAM NAME]</code>  </p>
+<h4 id="5">5. 전송프로그램 실행<a class="headerlink" href="#5" title="Permanent link">#</a></h4>
+<pre><code>pi&gt; raspivid -o - -t 0 -vf -hf -fps 30 -b 6000000 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 128k -g 50 -strict experimental -f flv [SERVER URL]/[STREAM NAME]
+</code></pre>
               
             </div>
           </div>

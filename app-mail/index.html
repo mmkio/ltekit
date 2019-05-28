@@ -85,7 +85,16 @@
     <a class="current" href="./">3.4.메일 보내기</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#_1">메일 보내기</a></li>
+    <li class="toctree-l3"><a href="#1">1.메일 보내기</a></li>
+    
+
+    <li class="toctree-l3"><a href="#2">2.메일 관련 라이브리 설치</a></li>
+    
+
+    <li class="toctree-l3"><a href="#3">3.실행프로그램 다운로드</a></li>
+    
+
+    <li class="toctree-l3"><a href="#4">4.소스코드</a></li>
     
 
     </ul>
@@ -129,33 +138,21 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="_1">메일 보내기<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
-<ol>
-<li>Register a Twitter App with <a href="https://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/">this</a> tutorial to get Consumer Key etc.</li>
-<li>Install Python and required libraries with following commands</li>
-<li><code>sudo apt-get install python-setuptools</code></li>
-<li><code>sudo easy_install pip</code></li>
-<li>
-<p><code>sudo pip install smtplib</code></p>
-</li>
-<li>
-<p>Download source code <a href="https://raw.githubusercontent.com/sixfab/rpiShields/master/tutorials/tutorial7/SecuritySystem.py">Link</a></p>
-</li>
-<li>
-<p><code>wget https://raw.githubusercontent.com/sixfab/rpiShields/master/tutorials/tutorial7/SecuritySystem.py</code></p>
-</li>
-<li>
-<p>Make it executable</p>
-</li>
-<li>
-<p><code>sudo chmod +x SecuritySystem.py</code></p>
-</li>
-<li>
-<p>Run it</p>
-</li>
-<li><code>sudo python SecuritySystem.py</code></li>
-</ol>
-<p>소스코드</p>
+                <h4 id="1">1.메일 보내기<a class="headerlink" href="#1" title="Permanent link">#</a></h4>
+<p>구글 메일 계정을 이용한 메일 보내기를 수행한다.</p>
+<h4 id="2">2.메일 관련 라이브리 설치<a class="headerlink" href="#2" title="Permanent link">#</a></h4>
+<pre><code>pi&gt; sudo apt-get install python-setuptools
+pi&gt; sudo easy_install pip
+pi&gt; sudo pip install smtplib
+</code></pre>
+
+<h4 id="3">3.실행프로그램 다운로드<a class="headerlink" href="#3" title="Permanent link">#</a></h4>
+<pre><code>wget https://raw.githubusercontent.com/sixfab/rpiShields/master/tutorials/tutorial7/SecuritySystem.py
+sudo chmod +x SecuritySystem.py
+sudo python SecuritySystem.py
+</code></pre>
+
+<h4 id="4">4.소스코드<a class="headerlink" href="#4" title="Permanent link">#</a></h4>
 <pre><code class="python">
 import RPi.GPIO as GPIO
 import picamera

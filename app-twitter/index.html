@@ -81,7 +81,16 @@
     <a class="current" href="./">3.3.트위트 보내기</a>
     <ul class="subnav">
             
-    <li class="toctree-l3"><a href="#_1">트위트 메시지 보내기</a></li>
+    <li class="toctree-l3"><a href="#1">1.트위트 메시지 보내기</a></li>
+    
+
+    <li class="toctree-l3"><a href="#2">2.트위트 관련 프로드램 인스톨</a></li>
+    
+
+    <li class="toctree-l3"><a href="#3">3.실행코드 다운로드</a></li>
+    
+
+    <li class="toctree-l3"><a href="#4">4.소스코드</a></li>
     
 
     </ul>
@@ -129,22 +138,22 @@
           <div role="main">
             <div class="section">
               
-                <h3 id="_1">트위트 메시지 보내기<a class="headerlink" href="#_1" title="Permanent link">#</a></h3>
-<p>or 3G/LTE Shield
-- Make <a href="https://github.com/sixfab/rpiShields/tree/master/tutorials/tutorial2">Tutorial 3</a> to connect internet over Mobile.
-Register a Twitter App with this tutorial to get Consumer Key etc.
-Install Python and required libraries with following commands
-sudo apt-get install python-setuptools
+                <h4 id="1">1.트위트 메시지 보내기<a class="headerlink" href="#1" title="Permanent link">#</a></h4>
+<p>트위트를 이용하여 메시지 보내기를 수행한다.
+트위트 계정 등록을 수행한다.</p>
+<h4 id="2">2.트위트 관련 프로드램 인스톨<a class="headerlink" href="#2" title="Permanent link">#</a></h4>
+<pre><code>sudo apt-get install python-setuptools
 sudo easy_install pip
 sudo pip install twython
-Download source code Link
-wget https://raw.githubusercontent.com/sixfab/rpiShields/master/tutorials/tutorial5/Tiwitting.py
-Make it executable
+</code></pre>
+
+<h4 id="3">3.실행코드 다운로드<a class="headerlink" href="#3" title="Permanent link">#</a></h4>
+<pre><code>wget https://raw.githubusercontent.com/Tiwitting.py
 sudo chmod +x Tiwitting.py
-Let's send tweet
-python Tiwitting.py 'Hello Everyone, I am using Sixfab Iot Shield!'</p>
-<p>https://stackabuse.com/accessing-the-twitter-api-with-python/</p>
-<p>소스코드</p>
+Tiwitting.py 'Hello Everyone'
+</code></pre>
+
+<h4 id="4">4.소스코드<a class="headerlink" href="#4" title="Permanent link">#</a></h4>
 <pre><code class="python">import sys
 import picamera
 from twython import Twython
@@ -160,8 +169,6 @@ camera.resolution = (1024, 768)
 camera.capture('image.jpg')
 photo=open('image.jpg','rb')
 api.update_status_with_media(media=photo, status=sys.argv[1])
-
-
 
 </code></pre>
               
